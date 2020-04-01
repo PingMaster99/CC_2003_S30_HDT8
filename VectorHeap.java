@@ -3,7 +3,7 @@ import java.util.Vector;
 public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E>{
     protected Vector<E> data; // the data, kept in heap order
     public VectorHeap()
-    // post: constructs a new priority queuesdfsdf asdfsad fsd e
+    // post: constructs a new priority queue
     {
         data = new Vector<E>();
     }
