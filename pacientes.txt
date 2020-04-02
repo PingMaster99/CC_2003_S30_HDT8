@@ -1,4 +1,5 @@
 Juan Perez, fractura de pierna, C
 Maria Ramirez, apendicitis, A
+Elmer Homero, COVID-19, A
 Lorenzo Toledo, chikunguya, E
 Carmen Sarmientos, dolores de parto, B

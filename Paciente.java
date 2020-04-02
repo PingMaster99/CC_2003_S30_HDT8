@@ -18,4 +18,16 @@ public class Paciente implements Comparable<Paciente>{
         }
         return 0;   // Patient has equal priority
     }
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public String getSymptoms() {
+        return symptoms;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
 }

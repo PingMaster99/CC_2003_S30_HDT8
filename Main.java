@@ -7,10 +7,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        // Queues are initialized before to avoid code repetition below
+        // patientDat contains all patients in the file
         ArrayList<Paciente> patientData = new ArrayList<>();    // Data obtained from text file
-        VectorHeap<Paciente> patientHeap = new VectorHeap<>();  // Using VectorHeap with PriorityQueue
-        PriorityQueue<Paciente> patientQueue = new PriorityQueue<Paciente>();   // Using JCF
 
         Scanner input = new Scanner(System.in);
         System.out.println("Indique el tipo de implementacion que desea utilizar: ");
@@ -36,15 +34,60 @@ public class Main {
 
         if(choice.equals("1")) {
             System.out.println("Utilizando VectorHeap con PriorityQueue");
+            VectorHeap<Paciente> patientHeap = new VectorHeap<>();  // Using VectorHeap with PriorityQueue
             for(int i = 0; i < patientData.size(); i++) {
                 patientHeap.add(patientData.get(i));
             }
 
+            for(int i = 0; patientHeap.size() > 0; i++){
+                Paciente currentPatient = patientHeap.remove();
+                attendPatient(currentPatient);
+            }
+
+
         } else {
             System.out.println("Utilizando Java Collections Framework");
+            PriorityQueue<Paciente> patientQueue = new PriorityQueue<Paciente>();   // Using JCF
             for(int i = 0; i < patientData.size(); i++) {
                 patientQueue.add(patientData.get(i));
             }
+
+            for(int i = 0; patientQueue.size() > 0; i++){
+                Paciente currentPatient = patientQueue.remove();
+                attendPatient(currentPatient);
+            }
         }
+        System.out.println();
+        System.out.println("Gracias por ayudar a salvar vidas, su trabajo por hoy ha terminado");
+        System.out.println("No olvide lavar sus manos :)");
+    }
+
+    public static void attendPatient(Paciente patient) {
+        Scanner next = new Scanner(System.in);
+        String name = patient.getPatientName();
+        String symptoms = patient.getSymptoms();
+        String priority = patient.getPriority();
+
+        System.out.println("-----------------------------------------------------------------------------------------");
+        System.out.println("Atendiendo paciente");
+        System.out.println("Nombre: " + name);
+        System.out.println("Padecimientos:" + symptoms);
+        System.out.println("Prioridad:" + priority);
+
+        // Added an easter egg
+        if(symptoms.equals(" COVID-19")) {
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ADVERTENCIA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            System.out.println("                  Este paciente padece de Coronavirus, \n" +
+                    "      se recomienda enviarlo inmediatamente a un hospital designado" );
+            System.out.println();
+            System.out.println("   Segun el analisis por inteligencia artificial, el paciente se curara en 3 dias");
+
+        }
+
+        System.out.println("-----------------------------------------------------------------------------------------");
+        System.out.println();
+        System.out.println("Presione enter cuando desee atender al siguiente");
+        System.out.print(">>");
+        next.nextLine();
     }
 }
