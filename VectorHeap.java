@@ -1,12 +1,32 @@
 import java.util.Vector;
-
+/**
+ * <h1>VectorHeap</h1>
+ * Heap used to implement a priority queue
+ *
+ * References:
+ * Bailey, D. A. (2007). Java Structures. Massachusetts: Williams College
+ * <p>
+ *
+ * @author Pablo Ruiz (PingMaster99)
+ * @version 1.0
+ * @since 2020-04-01
+ **/
 public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
+
     protected Vector<E> data; // the data, kept in heap order
+    /**
+     * Constructor for the VectorHeap
+     */
     public VectorHeap()
     // post: constructs a new priority queue
     {
         data = new Vector<E>();
     }
+
+    /**
+     * Builds a VectorHeap from a vector
+     * @param v the original vector
+     */
     public VectorHeap(Vector<E> v)
     // post: constructs a new priority queue from an unordered vector
     {
@@ -18,6 +38,10 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
         }
     }
 
+    /**
+     * Checks if the heap is empty or not
+     * @return boolean if its empty or not
+     */
     public boolean isEmpty() {
         if(data.size() == 0) {
             return true;
@@ -25,14 +49,24 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
         return false;
     }
 
+    /**
+     * Gets the size of the heap
+     * @return its size
+     */
     public int size() {
         return data.size();
     }
 
+    /**
+     * Clears the heap
+     */
     public void clear() {
         data.clear();
     }
-
+    /**
+     * Gets the first element in the heap
+     * @return the first element
+     */
     public E getFirst()
     // pre: !isEmpry()
     // post: returns the minimum value of the priority queue
@@ -40,24 +74,43 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
         return data.get(0);
     }
 
+    /**
+     * Returns the parent of a particular element
+     * @return parent node
+     */
     protected static int parent(int i)
     // pre: 0 <= i < size
     // post: returns parent of node at location i
     {
         return (i-1)/2;
     }
+
+    /**
+     * Returns the left child of a particular element
+     * @return locarion of left child
+     */
     protected static int left(int i)
     // pre: 0 <= i < size
     // post: returns index of left child of node at location i
     {
         return 2*i+1;
     }
+
+    /**
+     * Returns the right child of a particular element
+     * @return locarion of right child
+     */
     protected static int right(int i)
     // pre: 0 <= i < size
     // post: returns index of right child of node at location i
     {
         return (2*i+1) + 1;
     }
+
+    /**
+     * Moves the current element to its appropiate position
+     * @param leaf the element to percolate
+     */
     protected void percolateUp(int leaf)
     // pre: 0 <= leaf < size
     // post: moves node at index leaf up to appropriate position
@@ -73,6 +126,11 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
         }
         data.set(leaf,value);
     }
+
+    /**
+     * Adds a new element to the heap
+     * @param value to be added
+     */
     public void add(E value)
     // pre: value is non-null comparable
     // post: value is added to priority queue
@@ -80,6 +138,11 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
         data.add(value);
         percolateUp(data.size()-1);
     }
+
+    /**
+     * Moves the element at the root to its appropiate location
+     * @param root of the heap
+     */
     protected void pushDownRoot(int root)
     // pre: 0 <= root < size
     // post: moves node at index root down
@@ -113,6 +176,11 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
             }
         }
     }
+
+    /**
+     * Removes an element of the heap (highest priority)
+     * @return the element that was removed
+     */
     public E remove()
     // pre: !isEmpty()
     // post: returns and removes minimum value from queue

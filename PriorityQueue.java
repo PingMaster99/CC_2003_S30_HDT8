@@ -1,3 +1,15 @@
+/**
+ * <h1>PriorityQueue</h1>
+ * Interface of PriorityQueue used in VectorHeap
+ *
+ * References:
+ * Bailey, D. A. (2007). Java Structures. Massachusetts: Williams College
+ * <p>
+ *
+ * @author Pablo Ruiz (PingMaster99)
+ * @version 1.0
+ * @since 2020-04-01
+ **/
 public interface PriorityQueue<E extends Comparable<E>> {
     E getFirst();
     // pre: !isEmpty()
