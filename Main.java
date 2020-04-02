@@ -30,6 +30,7 @@ public class Main {
         System.out.println("2 -> Implementacion de Java Collections Framework");
         System.out.println("-----------------------------------------------------------------------------------------");
 
+        System.out.print(">>");
         String choice = input.nextLine();   // Gets input
 
         // Reads the document
