@@ -88,6 +88,9 @@ public class Main {
         System.out.println();
         System.out.println("Gracias por ayudar a salvar vidas, su trabajo por hoy ha terminado");
         System.out.println("No olvide lavar sus manos :)");
+        System.out.println();
+        System.out.println("Presione enter para salir");
+        input.nextLine();
     }
 
     /**
@@ -112,7 +115,7 @@ public class Main {
         // Added an easter egg
         if(symptoms.equals(" COVID-19")) {
             System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ADVERTENCIA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            System.out.println("                      Este paciente padece de Coronavirus, \n" +
+            System.out.println("                        Este paciente padece Coronavirus, \n" +
                     "          se recomienda enviarlo inmediatamente a un hospital designado" );
             System.out.println();
             System.out.println("                              No ha contagiado a nadie");
